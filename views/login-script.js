@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 localStorage.setItem("userInfo", JSON.stringify(user));
                 if (response.data.status === 200) {
                     alert('Login successfully');
-                    window.location.href = "#";
+                    window.location.href = "chat.html";
                 }
                 else{
                     alert(response.data.message);
