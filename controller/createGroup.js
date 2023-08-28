@@ -6,7 +6,7 @@ const {Group} = require('../models/database');
 const sequelize = require('../models/sequelize');
 
 
-let url = 'http://localhost:3000/';
+let url = 'http://localhost:4000';
 
 
 exports.getCreateGropPage = (req,res,next)=>{

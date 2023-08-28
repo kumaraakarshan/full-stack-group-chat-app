@@ -6,9 +6,9 @@ const sequelize = require('../models/sequelize');
 
 try{
 
-const io = require('socket.io')(3001, {
+const io = require('socket.io')(3000, {
     cors: {
-        origin: ['http://localhost:3000/']
+        origin: ['http://localhost:4000/']
     }
 });
 
@@ -62,7 +62,7 @@ io.on('connection', socket =>{
 
             try{
 
-                let chat = await Chat.create({
+                let chat = await Chats.create({
                     message: msg,
                     userId: pass.userId,
                     groupId: pass.groupId,
@@ -71,6 +71,7 @@ io.on('connection', socket =>{
                 );
 
                 await t.commit();
+                console.log('Message saved to database:', chat);
 
             }catch(err){
                 await t.rollback()

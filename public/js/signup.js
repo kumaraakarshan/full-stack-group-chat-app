@@ -1,20 +1,20 @@
-     let url = 'http://localhost:3000';
+     let url = 'http://localhost:4000';
     //let url = 'http://localhost:3000';
 
 
-document.getElementById('button').addEventListener('click',async()=>{
+document.getElementById('submitBtn').addEventListener('click',async()=>{
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
     let number = document.getElementById('number').value;
     let password = document.getElementById('password').value;
 
-    let res = await axios.post(`${url}/signup`,{name,email,number,password});
+    let res = await axios.post(`/signup`,{name,email,number,password});
     console.log(res);
 
     if(res.data === 'success'){
 
         alert("Successfuly signed up");
-        location.href = `${url}/login`;
+        location.href = `/login`;
 
     }else if(res.data === 'fill all field'){
         
