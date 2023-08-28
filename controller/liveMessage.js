@@ -36,14 +36,15 @@ let auth = async(cred)=>{
 }
 
 
-
+function initializeSocketIO(io) {
 io.on('connection', socket =>{
     
     socket.on('join-group',async group =>{
         let pass = await auth(group);
-
+console.log(pass);
         if(pass){
             socket.join(pass.groupId);
+
         }
         else{
             socket.emit('join-group-failed', 'You have no permission');
@@ -54,6 +55,7 @@ io.on('connection', socket =>{
     socket.on('send-msg', async (msg, room)=>{
         
         let pass = await auth(room);
+        console.log(pass);
         
         if(pass){
             socket.to(pass.groupId).emit('receive-msg',{msg: msg, g: pass.groupId});
@@ -105,6 +107,9 @@ io.on('connection', socket =>{
 })
 
 
+}
 }catch(err){
     console.trace(err);
 }
+
+module.exports = initializeSocketIO;
