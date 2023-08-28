@@ -2,12 +2,10 @@ window.addEventListener('DOMContentLoaded',async()=>{
     let token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = token;
  
-    // let url = 'http://localhost:4000';
-    let url = 'http://localhost:4000';
 
     let id = location.href;
 
-    let res = await axios.post(`${url}/join`,{
+    let res = await axios.post(`/join`,{
         link: id
     }) 
     console.log(res);
@@ -31,13 +29,13 @@ window.addEventListener('DOMContentLoaded',async()=>{
         let token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = token;
 
-        let res = await axios.get(`${url}/join`);
+        let res = await axios.get(`/join`);
         //console.log(res);
-        location.href = `${url}/chat`;
+        location.href = `$/chat`;
     })
     
     
     document.getElementById('cancel').addEventListener('click', async()=>{
-        location.href = `${url}/chat`;
+        location.href = `/chat`;
     })
 });

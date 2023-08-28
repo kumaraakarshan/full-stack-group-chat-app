@@ -1,5 +1,4 @@
-    // let url = 'http://localhost:4000';
-    let url = 'http://localhost:4000';
+   
 
 let token = localStorage.getItem('token');
 axios.defaults.headers.common['Authorization'] = token;
@@ -10,7 +9,7 @@ document.getElementById('button').addEventListener('click', async()=>{
 
         
         let name = document.getElementById('groupName').value;
-        let res = await axios.post(`${url}/group/create`,{name : name});
+        let res = await axios.post(`/group/create`,{name : name});
 
         console.log(res);
 
@@ -34,7 +33,7 @@ document.getElementById('button').addEventListener('click', async()=>{
 
 
 document.getElementById('cancel').addEventListener('click', async()=>{
-    location.href = `${url}/chat`
+    location.href = `/chat`
 });
 
 

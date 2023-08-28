@@ -6,9 +6,9 @@ const sequelize = require('../models/sequelize');
 
 try{
 
-const io = require('socket.io')(3000, {
+const io = require('socket.io')(5000, {
     cors: {
-        origin: ['http://localhost:4000/']
+        origin: ['/']
     }
 });
 

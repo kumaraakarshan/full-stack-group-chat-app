@@ -1,12 +1,12 @@
 window.addEventListener('DOMContentLoaded', async()=>{
 
     // let url = 'http://localhost:4000';
-    let url = 'http://localhost:4000';
+    //let url = 'http://localhost:4000';
 
     let token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = token;
 
-    let res = await axios.get(`${url}/admin/members`);
+    let res = await axios.get(`/admin/members`);
     console.log(res);
     console.log(res.data[0].users);
 
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
 
 
         p.addEventListener('click', async()=>{
-            let res = await axios.post(`${url}/admin/admin`,{id: id});
+            let res = await axios.post(`/admin/admin`,{id: id});
             console.log(res);
             p.className = "btn btn-success btn-sm";
             location.reload();
@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
 
         
         d.addEventListener('click', async()=>{
-            let res = await axios.post(`${url}/admin/remove`,{id: id});
+            let res = await axios.post(`/admin/remove`,{id: id});
             console.log(res);
             d.className = "btn btn-danger btn-sm";
             location.reload();
@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
         try{
 
             let email = document.getElementById('email').value;
-            let res = await axios.post(`${url}/admin/add`,{email: email});
+            let res = await axios.post(`/admin/add`,{email: email});
             console.log(res);
 
             if(res.data === 'not admin'){
@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
 
 
                     p.addEventListener('click', async()=>{
-                        let res = await axios.post(`${url}/admin/admin`,{id: id});
+                        let res = await axios.post(`/admin/admin`,{id: id});
                         console.log(res);
                         p.className = "btn btn-success btn-sm";
                         location.reload();
@@ -98,7 +98,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
 
                     
                     d.addEventListener('click', async()=>{
-                        let res = await axios.post(`${url}/admin/remove`,{id: id});
+                        let res = await axios.post(`/admin/remove`,{id: id});
                         console.log(res);
                         d.className = "btn btn-danger btn-sm";
                         location.reload();

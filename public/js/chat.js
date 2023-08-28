@@ -1,14 +1,14 @@
 window.addEventListener('DOMContentLoaded',async()=>{
 
 
-    let url = 'http://localhost:4000';
+    //let url = 'http://localhost:4000';
     // let url = 'http://localhost:4000';
 
 
     // in future im planning to use linked list rather than using array in local storage
 
     // to connecting backend server
-    const socket = io('http://localhost:4000');//4001
+    const socket = io('/');//4001
 
 
     let token = localStorage.getItem('token');
@@ -16,12 +16,12 @@ window.addEventListener('DOMContentLoaded',async()=>{
 
 
     document.getElementById('createGroup').addEventListener('click',async()=>{
-        location.href = `${url}/group/create`;
+        location.href = `/group/create`;
     });
 
     
     document.getElementById('edit').addEventListener('click',async()=>{
-        location.href = `${url}/admin`;
+        location.href = `/admin`;
     });
 
 
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded',async()=>{
 
         formData.append('file', input[0])
 
-        let res = await axios.post(`${url}/chat/upload`, formData,{
+        let res = await axios.post(`/chat/upload`, formData,{
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -117,7 +117,7 @@ if(local_data === null){
     // local_data = JSON.stringify(local_data);
     // localStorage.setItem('data', local_data);
     
-    let data = await axios.get(`${url}/chat/groups`);
+    let data = await axios.get(`/chat/groups`);
     
     if(data.data === 'no contacts'){
         alert('You are not part of any groups, create a groups and invite your friends');
@@ -181,7 +181,7 @@ if(local_data === null){
 
 
                     // getting messages
-                    let res = await axios.get(`${url}/chat/messages`);
+                    let res = await axios.get(`/chat/messages`);
                     // console.log(res);
 
                     //show data on screen

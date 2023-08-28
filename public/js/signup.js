@@ -1,5 +1,4 @@
-     let url = 'http://localhost:4000';
-    //let url = 'http://localhost:3000';
+   
 
 
 document.getElementById('submitBtn').addEventListener('click',async()=>{
