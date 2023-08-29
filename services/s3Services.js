@@ -5,8 +5,7 @@ const { resolve } = require('path');
 const ID = process.env.ACCESS_KEY_ID;
 const SECRET = process.env.SECRET_KEY;
 
-// The name of the bucket that you have created
-const BUCKET_NAME = 'groupchatapp1';
+
 
 const s3 = new AWS.S3({
     accessKeyId: ID,
@@ -17,7 +16,7 @@ const params = {
     Bucket: process.env.BUCKET_NAME,
     CreateBucketConfiguration: {
         // Set your region here
-        LocationConstraint: "ap-northeast-1"
+        LocationConstraint: "eu-north-1"
     }
 };
 
