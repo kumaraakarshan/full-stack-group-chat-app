@@ -17,7 +17,7 @@ async function signUp(event) {
     console.log(obj.email);
 
     try {
-        const res = await axios.post('http://localhost:3000/user/signup',obj)
+        const res = await axios.post('/user/signup',obj)
         if(res.status === 201){
             alert('User created succesfully')
             window.location.href = './login.html'

@@ -26,7 +26,7 @@ const userId = localStorage.getItem('userId');
       //event.preventDefault();
       try {
           const name = document.getElementById("create-group-input").value;
-      const res = await axios.post('http://localhost:3000/create-group', {name, isAdmin:true}, {headers: { "Authorization": token }});
+      const res = await axios.post('/create-group', {name, isAdmin:true}, {headers: { "Authorization": token }});
       //console.log('>>GrouP ID', res.data.group.id);
       const groupId = res.data.group.id;
       localStorage.setItem('groupId', groupId);
@@ -38,7 +38,7 @@ const userId = localStorage.getItem('userId');
     }
 
     axios
-  .get("http://localhost:3000/get-groups", {headers: { "Authorization": token }})
+  .get("/get-groups", {headers: { "Authorization": token }})
   .then((res) => {
     //getting groups
     const groupListDiv = document.getElementById("group-list");
