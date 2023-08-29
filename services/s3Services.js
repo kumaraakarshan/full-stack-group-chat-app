@@ -6,7 +6,6 @@ const ID = process.env.ACCESS_KEY_ID;
 const SECRET = process.env.SECRET_KEY;
 
 
-
 const s3 = new AWS.S3({
     accessKeyId: ID,
     secretAccessKey: SECRET
@@ -27,7 +26,7 @@ const uploadFile = (fileName) => {
     // Setting up S3 upload parameters
     const params = {
         Bucket: process.env.BUCKET_NAME,
-        Key: 'flower.jpg', // File name you want to save as in S3
+        Key: 'rose.jpg', // File name you want to save as in S3
         Body: fileContent
     };
 
