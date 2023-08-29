@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="forgot.css">
+</head>
+<body>
+    <div class="form-group">
+        <form onsubmit="forgotPass(event)" method="POST">
+            <input id="femail" type="email" name="email" placeholder="Email" required>
+            <button id="forgSubmit" type="submit" class="form-content">submit</button>
+        </form>
+        <!-- <button class="form-content" formaction="home.html">Signup</button> -->
+    </div>
+    <div class="login_link" style="color: rgba(218, 218, 218, 0.774); padding-top: 40px;">
+        <a href="./login.html" style="text-decoration: none; color: white;"> Go back to Login Page! </a>
+    </div>
+    <script src="./forgot.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</body>
+</html>

@@ -1,69 +1,59 @@
+require('dotenv').config();
 const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
-const parser = require('body-parser');
-const cors = require('cors');
-const sequelize = require('./models/sequelize');
-const signupRoute = require('./routes/signup');
-const loginRoute = require('./routes/login');
-const chatRoute = require('./routes/chat');
-const joinGroupRoute = require('./routes/joinGroup');
-const createGroupRoute = require('./routes/createGroup');
-const liveChatRoute = require('./routes/liveMessage');
-const adminRoute = require('./routes/admin');
-const uploadRoute = require('./routes/upload');
+const bodyParser = require('body-parser');
+const helmet = require('helmet')
+const morgan = require('morgan')
 
-const cronjob = require('./controller/cronjob');
+//database
+const sequelize = require('./util/database');
+const cors = require('cors');
+const { serialize } = require('v8');
+
+//routes
+const userRoutes = require('./routes/user');
+const groupRoutes = require('./routes/group');
+const chatRoutes = require('./routes/chat');
+const forgotPassRoutes = require('./routes/forgotPassword');
+//models
+const User = require('./models/user')
+const Chat = require('./models/chats')
+const Group = require('./models/group');
+const userGroup = require('./models/userGroup');
+const ForgotPassword = require('./models/forgotPassword');
 
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
-
 app.use(express.static('public'));
-app.use(parser.urlencoded({ extended: false }));
-app.use(parser.json());
-
+app.use(express.json());
 app.use(cors({
-    origin: ['/'], // Replace with your client's address
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    origin:'*',
+    credentials:true
 }));
+app.use(helmet());
 
-app.use(signupRoute);
-app.use(loginRoute);
-app.use(chatRoute);
-app.use(joinGroupRoute);
-app.use(createGroupRoute);
-//app.use(liveChatRoute);
-app.use(adminRoute);
-app.use(uploadRoute);
+app.use('/user',userRoutes);
+app.use(groupRoutes);
+app.use(chatRoutes);
+app.use('/password',forgotPassRoutes)
 
-cronjob.midNightWork();
+//associations
+User.hasMany(ForgotPassword);
+ForgotPassword.belongsTo(User);
 
-// io.on('connection', (socket) => {
-//     console.log('A user connected');
+User.hasMany(Chat);
+Chat.belongsTo(User);
 
-//     socket.on('send-msg', (msg, room) => {
-//         // Handle the 'send-msg' event here
-//         // You can access 'msg' and 'room' parameters
-//         // and perform actions such as broadcasting the message to other clients.
-//         io.to(room).emit('receive-msg', { msg: msg, g: room });
-//     });
+Group.belongsToMany(User, {through:userGroup});
+User.belongsToMany(Group, {through: userGroup});
 
-//     // Add other WebSocket event handlers as needed
+Group.hasMany(Chat);
+Chat.belongsTo(Group);
 
-//     socket.on('disconnect', () => {
-//         console.log('A user disconnected');
-//     });
-// });
-
-sequelize.sync()
-  .then(() => {
-    console.log('Database synchronized');
+sequelize
+  .sync()
+  .then(result => {
+    // console.log(result);
+    app.listen(3000);
   })
-  .catch((error) => {
-    console.error('Database synchronization error:', error);
+  .catch(err => {
+    console.log(err);
   });
-
-server.listen(process.env.PORT || 4000, () => {
-    console.log(`Server is running on port ${server.address().port}`);
-});

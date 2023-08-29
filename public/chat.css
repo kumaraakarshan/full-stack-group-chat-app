@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+*, body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+    
+    background-color: #a7b6eb;
+    overflow: hidden;
+}
+
+#main {
+    display: grid;
+    grid-template-areas: 'left right';
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100vh;
+    grid-gap: 10px;
+}
+
+#logout-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    border: none;
+    color: #ebeff8;
+    background-color: rgb(1, 37, 15);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.group-list-container {
+    min-height: 100vh;
+    width: 500px;
+    margin: 30px 20px;
+}
+
+.create-group-input{
+    padding: 10px 15px;
+    border-radius: 20px;
+    width: 250px;
+}
+
+.create-group-btn {
+    border: 1px solid white;
+    color: #ebeff8;
+    background-color: #152733;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+.create-group-btn:hover {
+    color: #152733;
+    background-color: #ebeff8;
+    transition: 0.3s ease-in-out;
+}
+
+.group-list-container h2 {
+    position: relative;
+    top: 0;
+    left: 20px;
+    color: #ebeff8;
+}
+
+.group-list-container li {
+    list-style-type: none;
+}
+
+#show-users {
+    border: 1px solid rgb(132, 203, 216);
+    color: rgb(132, 203, 216);
+    background-color: #152733;
+    padding: 5px 7px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+#show-users:hover {
+    color: #152733;
+    background-color: rgb(132, 203, 216);
+}
+
+#change-group-btn {
+    border: 1px solid rgb(48, 247, 107);
+    color: rgb(48, 247, 107);
+    background-color: #152733;
+    padding: 5px 7px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+#change-group-btn:hover {
+    color: #152733;
+    background-color: rgb(48, 247, 107);
+}
+#delete-group-btn {
+    border: 1px solid rgb(236, 60, 16);
+    color: rgb(236, 60, 16);
+    background-color: #152733;
+    padding: 5px 7px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+#delete-group-btn:hover {
+    color: #152733;
+    background-color: rgb(236, 60, 16);
+}
+
+#add-user-btn {
+    border: 1px solid rgb(244, 248, 28);
+    color: rgb(244, 248, 28);
+    background-color: #152733;
+    padding: 5px 7px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+#add-user-btn:hover {
+    color: #152733;
+    background-color: rgb(244, 248, 28);
+}
+
+#remove-user-btn {
+    border: 1px solid rgb(236, 60, 16);
+    color: rgb(236, 60, 16);
+    background-color: #152733;
+    padding: 5px 7px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+#remove-user-btn:hover {
+    color: #152733;
+    background-color: rgb(236, 60, 16);
+}
+
+#make-admin-btn {
+    border: 1px solid rgb(48, 247, 107);
+    color: rgb(48, 247, 107);
+    background-color: #152733;
+    padding: 5px 7px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+#make-admin-btn:hover {
+    color: #152733;
+    background-color: rgb(48, 247, 107);
+}
+
+#current-group-name {
+    color: #ebeff8;
+    font-size: 20px;
+}
+
+#user-list {
+    display: none;
+}
+
+.group-chat-container {
+    min-height: 100vh;
+    width: 500px;
+    margin: 30px 20px;
+}
+
+.group-chat-container form {
+    position: fixed;
+    top: 600px;
+    bottom: 10px;
+}
+
+.send-container input {
+    padding: 10px 15px;
+    border-radius: 20px;
+    width: 330px;
+}
+
+.send-btn {
+    color: #152733;
+    background-color: rgb(48, 247, 107);
+    padding: 7px 10px;
+    border-radius: 50%;
+    cursor: pointer; 
+    font-size: large;
+    font-weight: 600;
+}
+
+.send-media-btn {
+    color: #152733;
+    background-color: rgb(48, 167, 247);
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer; 
+    font-size: large;
+    font-weight: 100;
+}
+
+.chat-span {
+    color: white;
+}

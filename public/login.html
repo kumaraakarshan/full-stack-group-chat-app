@@ -15,11 +15,11 @@
                     <div class="card-body">
                         <h1 class="text-center">Group chat app login</h1>
                         
-                        <form id="loginForm" action="/api/login" method="post">
+                        <form onsubmit="login(event)" method="POST">
                             
                             <div class="form-group">
                                 <label for="email">email:</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder ="email"required>
+                                <input type="text" class="form-control" id="emailId" name="emailId" placeholder ="email"required>
                             </div>
                             <div class="form-group">
 
@@ -29,17 +29,15 @@
 
                               
                             </div>
-                            <div class="form-group text-center" id ="submitBUTTON">
-                                <button type="button" class="btn btn-primary" id="loginBtn">login</button>
+                            <button type="submit" id="submit">Login</button>
 
-                            </div>
 
                         </form>
                         <div>
                             <a href="index.html">not a user sign  Click here to signup</a>
                         </div>
-                        <div>
-                            <a href="forget-password.html">Click here to reset password</a>
+                        <div class="forgot_link" style="color: rgba(218, 218, 218, 0.774);">
+                            Forgot Password? <a href="./forgot.html" style="text-decoration: none;">Retrieve Password</a>
                         </div>
                         
                         
@@ -52,7 +50,7 @@
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
 
-    <script src="/js/login.js"></script>
+    <script src="login.js"></script>
 
 </body>
 </html>
