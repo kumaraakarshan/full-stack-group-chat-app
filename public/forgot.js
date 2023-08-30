@@ -10,7 +10,7 @@ function forgotPass(event) {
     }
 
     console.log(obj)
-    axios.post('http://localhost:3000/password/forgotpassword',obj , {header: {"Authorization": token}})
+    axios.post('/password/forgotpassword',obj , {header: {"Authorization": token}})
     .then(res => {
         document.body.innerHTML += `<div style="color:red;text-align:center;margin-top:70px;">Mail Successfuly sent <div>`
     })
