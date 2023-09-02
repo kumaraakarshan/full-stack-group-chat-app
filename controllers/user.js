@@ -9,7 +9,7 @@ exports.signunp = async (req, res, next) => {
     }
     try {
      const user = await User.findAll({where:{email}});
- 
+  
      if(user.length > 0) {
          return res.status(207).json({success: false, message:'user already exists'});
      } else {

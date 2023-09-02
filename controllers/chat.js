@@ -28,7 +28,7 @@ exports.getChats = async (req, res) => {
 
 exports.uploadFile = async(req,res) => {
     try {
-        const fileURL = await S3Services.uploadFile('assets/flower.jpg')
+        const fileURL = await S3Services.uploadFile('assets/rose.jpg')
         res.status(200).json({ success: true, fileURL})
     } catch (error) {
         console.log(error)
